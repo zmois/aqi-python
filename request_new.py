@@ -1,57 +1,130 @@
-# import requests
-# import datetime
-# import json
-# from datetime import date 
-# import pandas as pd
-# from keys import API_KEYS
+import requests
+import datetime
+import json
+from datetime import date 
+import pandas as pd
+import csv
+import numpy as np
+from matplotlib import pyplot as plt
+from keys import API_KEYS
 
-# # zip_code = "40204" # input zip code
-# # input_date = "2020-06-29"  # input date in YYYY-MM-DD format
+def get_current_data(zip_code, API_KEYS):
 
-# def get_current_data(zip_code, API_KEYS):
+    current = f'http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode={zip_code}&distance=25&API_KEY={API_KEYS}'
+    aqi = requests.get(current).json()
+    #df = pd.json_normalize(aqi)
+    # plot_today = df_c[['ReportingArea', 'StateCode', 'DateObserved', 'ParameterName', 'AQI', 'Category.Name']]
+    # plot_today.to_csv('data/c_modified.csv')
+    return aqi
 
-#     current = f'http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode={zip_code}&distance=25&API_KEY={API_KEYS}'
-#     rc = requests.get(current)
-#     aqi_today = rc.json
-#     df_c = pd.json_normalize(aqi_today)
-#     return df_c #aqi_today
+def get_historic_data(zip_code, date_past, API_KEYS):
 
-# def get_historic_data( zip_code, date_past, API_KEYS):
+    historic = f'http://www.airnowapi.org/aq/observation/zipCode/historical/?format=application/json&zipCode={zip_code}&date={date_past}&distance=25&API_KEY={API_KEYS}'
+    aqi = requests.get(historic).json()
+    # df_h = pd.json_normalize(aqi_past)
+    # plot_historic = df_h[['ReportingArea', 'StateCode', 'DateObserved', 'ParameterName', 'AQI', 'Category.Name']]
+    # plot_historic.to_csv('data/h_modified.csv')
+    return aqi
 
-#     historic = f'http://www.airnowapi.org/aq/observation/zipCode/historical/?format=text/csv&zipCode={zip_code}&date={date_past}&distance=25&API_KEY={API_KEYS}'
-#     rh = requests.get(historic)
-#     aqi_past = rh.json()
-#     df_h = pd.json_normalize(aqi_past)
-#     return  df_h #aqi_past
+def get_forecast_data(zip_code, date_tomorrow, API_KEYS):
 
-# def get_forecast_data(zip_code, tomorrow, API_KEYS):
+    forecast = f'http://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode={zip_code}&date={date_tomorrow}&distance=25&API_KEY={API_KEYS}'
+    aqi_f = requests.get(forecast).json()
+    # df_f = pd.json_normalize(aqi_forecast)
+    # plot_forecast = df_f[['ReportingArea', 'DateForecast', 'ParameterName', 'Category.Name']]
+    # plot_forecast.to_csv('data/f_modified.csv')
+    return  aqi_f
 
-#     forecast = f'http://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode={zip_code}&date={date_tomorrow}&distance=25&API_KEY={API_KEYS}'
-#     rf = requests.get(forecast)
-#     aqi_forecast = rf.json()
-#     df_f = pd.json_normalize(aqi_forecast)
-#     return  df_f #aqi_forecast
+def search_data(input_date, zip_code, date_tomorrow, date_past, API_KEYS):
+    if input_date == str(today):
+        current_data = get_current_data(zip_code, API_KEYS)
+        return current_data 
 
-# def search_data(zip_code, date_tomorrow, date_past, API_KEYS):
-#      if input_date == str(today):
-#         get_current_data(zip_code, API_KEYS)
+    elif input_date == date_tomorrow: 
+       forecast_data = get_forecast_data(zip_code, date_tomorrow, API_KEYS)
+       return forecast_data 
 
-#      elif input_date == str(tomorrow): 
-#        get_forecast_data(zip_code, date_tomorrow, API_KEYS)
-  
-#      else:
-#         get_historic_data(zip_code, date_past, API_KEYS)
-   
-# if __name__ == "__main__":
-#     input_date = input("Please choose a date (YYYY-MM-DD format): ")
-#     zip_code = input("Please choose a Zip Code (XXXXX): ")
+    else:
+        past_data = get_historic_data(zip_code, date_past, API_KEYS)
+        return past_data 
 
-#     today = datetime.date.today()
-#     date_past = str(input_date + "T00-0000") # convert the date to the "YYYY-MM-DDT00-0000" format
-#     tomorrow = today + datetime.timedelta(days = 1) 
-#     date_tomorrow = str(tomorrow) # convert the date to the "YYYY-MM-DDT00-0000" format
+def store_data_to_df(data):
+    df = pd.json_normalize(data)
+    data_to_plot = df[['ReportingArea', 'StateCode', 'DateObserved', 'ParameterName', 'AQI', 'Category.Name']]
+    # plot_data.to_csv('data/modified.csv')
+    return data_to_plot
 
-# search_data(zip_code, date_tomorrow, date_past, API_KEYS)
-# #     search_for_new_book = googlebooks.asks_user_to_search_again()
+def store_data_f_to_df(data):
+    df = pd.json_normalize(data)
+    data_to_plot_f = df[['ReportingArea', 'DateForecast', 'ParameterName', 'Category.Name']]
+    # plot_data.to_csv('data/f_modified.csv')
+    return data_to_plot_f
+ 
+def save_to_file(data_to_plot, file_name):
+    stf = data_to_plot.to_csv(f'results/{file_name}')
+    return stf
+
+def plot_data(input_date):
+    plt.style.use("fivethirtyeight")
+    data = pd.read_csv(f'results/{input_date}')
+    x = data['ParameterName']
+    y = data['AQI']
+    plt.bar(x, y)
+    plt.title("AirNow")
+    plt.xlabel("AQI")
+    plt.ylabel("Value")
+    plt.tight_layout()
+    plt.show()   
+    
+def plot_data_f(input_date):
+    plt.style.use("fivethirtyeight")
+    data = pd.read_csv(f'results/{input_date}')
+    x = data['ParameterName']
+    y = data['Category.Name']
+    plt.bar(x, y)
+    plt.title("AirNow")
+    plt.xlabel("AQI")
+    plt.ylabel("Value")
+    plt.tight_layout()
+    plt.show()  
+
+# def asks_user_to_search_again(self):
+#     search_again = input("Would you like to search again? Enter y for Yes and n for No:")
+#     user_wants_search_again = search_again == 'y'
+#     if user_wants_search_again:
+#         new_input_date = input("Please choose a date (YYYY-MM-DD format): ")
+#         new_date_search = self.store_search(new_input_date)
+#         new_zip_code = input("Please choose a Zip Code (XXXXX): ")
+#         new_zip_code_search =  self.store_search(new_zip_code)
+#         new = self.displays_dataframe(new_result)
+#         print(new_result)
+#     else:
+#         print("Have a good day!")
 
 
+if __name__ == "__main__":
+    input_date = input("Please choose a date (YYYY-MM-DD format): ")
+    zip_code = input("Please choose a Zip Code (XXXXX): ")
+
+    today = datetime.date.today()
+    date_past = str(input_date + "T00-0000") # convert the date to the "YYYY-MM-DDT00-0000" format
+    tomorrow = today + datetime.timedelta(days = 1) 
+    date_tomorrow = str(tomorrow) # convert the date to the "YYYY-MM-DDT00-0000" format
+    
+    data = search_data(input_date, zip_code, date_tomorrow, date_past, API_KEYS)
+    # print(data)
+
+    if input_date == str(tomorrow): 
+       data_frame_f = store_data_f_to_df(data)
+       to_file = save_to_file(data_frame_f, input_date) 
+       print(data_frame_f)
+       plot_data_f(input_date)
+    else:
+        data_frame = store_data_to_df(data)
+        to_file = save_to_file(data_frame, input_date)
+        print(data_frame)
+        plot_data(input_date)
+        
+
+
+    
