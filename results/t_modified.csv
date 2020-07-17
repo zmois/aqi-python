@@ -1,0 +1,4 @@
+,Location,Date,Air_Pollutants,AQI,Rating
+0,"Louisville, KY",2020-07-17 ,O3,41,Good
+1,"Louisville, KY",2020-07-17 ,PM2.5,37,Good
+2,"Louisville, KY",2020-07-17 ,PM10,22,Good

@@ -1,0 +1,4 @@
+,ReportingArea,StateCode,DateObserved,ParameterName,AQI,Category.Name
+0,Louisville,KY,2020-07-15 ,OZONE,54,Moderate
+1,Louisville,KY,2020-07-15 ,PM2.5,41,Good
+2,Louisville,KY,2020-07-15 ,PM10,24,Good
