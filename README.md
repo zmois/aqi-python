@@ -15,9 +15,9 @@ An AirNow API account is required to obtain the API keys and get access to the w
 ## Project Overview
 
 The search is performed by Date and Zip Code (aka Reporting Area). Result will be shown as plot for Air Quality Index (AQI)-  levels of ozone, particle pollution, and other common air pollutants on the same scale, the higher the AQI rating, the greater the health impact
-• Real-time air quality observations 
-• Historical air quality observations 
-• Air quality forecasts
+- Real-time air quality observations 
+- Historical air quality observations 
+- Air quality forecasts
 
 **NOTE:** Forecasts are not necessarily available for all reporting areas. In addition, the forecast for each reporting area is unique:
 * Forecasts may not be issued every day or may be seasonal (e.g. winter or summer only).
