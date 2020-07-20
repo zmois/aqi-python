@@ -1,0 +1,4 @@
+,Location,Date,Air_Pollutants,AQI,Rating
+0,"Louisville, KY",2020-07-07 ,OZONE,143,Unhealthy for Sensitive Groups
+1,"Louisville, KY",2020-07-07 ,PM2.5,52,Moderate
+2,"Louisville, KY",2020-07-07 ,PM10,25,Good
