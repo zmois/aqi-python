@@ -9,7 +9,8 @@ An AirNow API account is required to obtain the API keys and get access to the w
 **The following Python packages need to be installed:**
 - requests
 - pandas
-- matplotlib 
+- matplotlib
+- seaborn
 
 ## Project Overview
 
@@ -24,11 +25,12 @@ The search is performed by Date and Zip Code (aka Reporting Area). Result will b
 * Forecasts may cover one or more pollutants (e.g. ozone, PM2.5).
 * Forecasts may include an AQI number (e.g., 51) or simply an AQI category (e.g., Moderate or Unhealthy).
 
+All search results are saved in csv file. The Real-time observations and Historical observations are visualized as Seaborn bar plots and saved in png format. The Forecast observations are represented as table and saved in png format.
+
 ## Requirements:
 
 This project fulfills the following requirements:
 - Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
-- *Implement a log that records errors, invalid inputs, or other important events and writes them to a text file*
 - Read data from an external file, such as text, JSON, CSV, etc and use that data in your application
 - Create and call at least 3 functions, at least one of which must return a value that is used
 - Connect to an external/3rd party API and read data into your app
