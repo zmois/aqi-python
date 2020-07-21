@@ -30,10 +30,10 @@ All search results are saved in csv file. The Real-time observations and Histori
 ## Requirements:
 
 This project fulfills the following requirements:
-- Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program,
-- Read data from an external file, such as text, JSON, CSV, etc and use that data in your application,
-- Create and call at least 3 functions, at least one of which must return a value that is used,
-- Connect to an external/3rd party API and read data into your app,
-- Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event),
-- Visualize data in a graph, chart, or other visual representation of data.
+- Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
+- Read data from an external file, such as text, JSON, CSV, etc and use that data in your application
+- Create and call at least 3 functions, at least one of which must return a value that is used
+- Connect to an external/3rd party API and read data into your app
+- Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event)
+- Visualize data in a graph, chart, or other visual representation of data
 
