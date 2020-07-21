@@ -25,7 +25,7 @@ The search is performed by Date and Zip Code (aka Reporting Area). Result will b
 * Forecasts may cover one or more pollutants (e.g. ozone, PM2.5).
 * Forecasts may include an AQI number (e.g., 51) or simply an AQI category (e.g., Moderate or Unhealthy).
 
-All search results are saved in csv file. The Real-time observations and Historical observations are visualized as Seaborn bar plots and saved in png format. The Forecast observations are represented as table and saved in png format.
+All search results are saved to the csv file. The Real-time observations and Historical observations are visualized as Seaborn bar plots and saved in the png format. The Forecast observations are represented as table and saved in png format.
 
 ## Requirements:
 

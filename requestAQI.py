@@ -10,7 +10,7 @@ import seaborn as sns
 from pandas.plotting import table
 from keys import API_KEYS
 
-#    Getting API request for Today date in json format
+#   Getting API request for Today date in json format
 def get_current_data(zip_code, API_KEYS):
 
     current = f'http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode={zip_code}&distance=25&API_KEY={API_KEYS}'
@@ -24,14 +24,14 @@ def get_historic_data(zip_code, input_date, API_KEYS):
     aqi = requests.get(historic).json()
     return aqi
 
-#    Getting API request for Tomorrow date in json format
+#   Getting API request for Tomorrow date in json format
 def get_forecast_data(zip_code, date_tomorrow, API_KEYS):
 
     forecast = f'http://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode={zip_code}&date={date_tomorrow}&distance=25&API_KEY={API_KEYS}'
     aqi_f = requests.get(forecast).json()
     return  aqi_f
 
-#    Searching for the Data depends on the chosen Date
+#   Searching for the Data depends on the chosen Date
 def search_data(input_date, zip_code, date_tomorrow, API_KEYS):
     if input_date == str(today):
         current_data = get_current_data(zip_code, API_KEYS)
@@ -44,7 +44,7 @@ def search_data(input_date, zip_code, date_tomorrow, API_KEYS):
     else:
         past_data = get_historic_data(zip_code, input_date, API_KEYS)
         return past_data 
-#    Converting Search Data to Data Frame format for Today and Historic Date
+#   Converting Search Data to Data Frame format for Today and Historic Date
 def store_data_to_df(data):
 
     df = pd.json_normalize(data) 
@@ -82,7 +82,7 @@ def plot_data(input_date):
     g.set_ylabels('Rating')
     plt.savefig(f'results/AQI_{input_date}.png')
 
-#    Save Forecast Date in the Table Format
+#   Save Forecast Date in the Table Format
 def plot_data_f(input_date):
 
     data = pd.read_csv(f'results/{input_date}.csv')
@@ -99,7 +99,6 @@ def plot_data_f(input_date):
     plt.savefig(f'results/AQI_{input_date}_table.png', transparent = True, bbox_inches='tight', pad_inches=0.1)
 
 #   Saving and visualizing the Data
-
 def data_to_visualize(input_date, data):
     if input_date == str(tomorrow): 
        data_frame_f = store_data_f_to_df(data)
@@ -121,7 +120,7 @@ def search_data_again(input_date, zip_code, date_tomorrow):
         new_search = search_data(new_input_date, new_zip_code, date_tomorrow, API_KEYS)
         return new_search
  
-# Main Program
+#   Main Program
 if __name__ == "__main__":
 
     input_date = input("Please choose a date (YYYY-MM-DD format): ")
