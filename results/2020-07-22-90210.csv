@@ -1,0 +1,6 @@
+,Location,Forecast_Date,Air_Pollutants,Rating
+0,"NW Coastal LA, CA",2020-07-22 ,O3,Good
+1,"NW Coastal LA, CA",2020-07-22 ,PM2.5,Moderate
+2,"NW Coastal LA, CA",2020-07-22 ,PM10,Good
+3,"NW Coastal LA, CA",2020-07-22 ,NO2,Good
+4,"NW Coastal LA, CA",2020-07-22 ,CO,Good

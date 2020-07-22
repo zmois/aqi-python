@@ -67,7 +67,7 @@ def store_data_f_to_df(data):
 #   Plotting Data for Today and Historic Date
 def plot_data(input_date):
 
-    data = pd.read_csv(f'results/{input_date}.csv')
+    data = pd.read_csv(f'results/{input_date}-{zip_code}.csv')
     colors = {'Good':'#66BB6A',
               'Moderate':'#FFEB3B',
               'Sensitive':'#F39C12',
@@ -80,15 +80,16 @@ def plot_data(input_date):
     plt.suptitle(f'Air Quality in {data.Location[0]} on {data.Date[0]}')
     g.despine(left=True)
     g.set_ylabels('Rating')
-    plt.savefig(f'results/AQI_{input_date}.png')
+    plt.savefig(f'results/AQI_{input_date}-{zip_code}.png')
 
 #   Save Forecast Date in the Table Format
 def plot_data_f(input_date):
 
-    data = pd.read_csv(f'results/{input_date}.csv')
+    data = pd.read_csv(f'results/{input_date}-{zip_code}.csv')
     data.drop(data.columns[data.columns.str.contains('unnamed',case = False)],axis = 1, inplace = True)
     
     fig, ax = plt.subplots(figsize=(12, 2)) # set size frame
+    fig.suptitle(f'Forecast Air Quality')
     ax.xaxis.set_visible(False)  # hide the x axis
     ax.yaxis.set_visible(False)  # hide the y axis
     ax.set_frame_on(False)  # no visible frame, uncomment if size is ok
@@ -96,49 +97,40 @@ def plot_data_f(input_date):
     tb.auto_set_font_size(True) # Activate set fontsize manually
     # tb.set_fontsize(16) # if ++fontsize is necessary ++colWidths
     tb.scale(1.5, 3) # change size table
-    plt.savefig(f'results/AQI_{input_date}_table.png', transparent = True, bbox_inches='tight', pad_inches=0.1)
+    plt.savefig(f'results/AQI_{input_date}-{zip_code}.png', transparent = True, bbox_inches='tight', pad_inches=0.1)
 
 #   Saving and visualizing the Data
-def data_to_visualize(input_date, data):
+def data_to_visualize(input_date, zip_code, data):
     if input_date == str(tomorrow): 
        data_frame_f = store_data_f_to_df(data)
-       data_frame_f.to_csv(f'results/{input_date}.csv')
+       data_frame_f.to_csv(f'results/{input_date}-{zip_code}.csv')
        print(data_frame_f)
        plot_data_f(input_date) 
     else:
         data_frame = store_data_to_df(data)
-        data_frame.to_csv(f'results/{input_date}.csv')
+        data_frame.to_csv(f'results/{input_date}-{zip_code}.csv')
         print(data_frame)
         plot_data(input_date)
 
-#   Initiate a New Search by User
-def search_data_again(input_date, zip_code, date_tomorrow):
-    
-    if user_wants_search_again:
-        new_input_date = input("Please choose a new date (YYYY-MM-DD format): ")
-        new_zip_code = input("Please choose a Zip Code (XXXXX): ")
-        new_search = search_data(new_input_date, new_zip_code, date_tomorrow, API_KEYS)
-        return new_search
- 
 #   Main Program
 if __name__ == "__main__":
 
-    input_date = input("Please choose a date (YYYY-MM-DD format): ")
-    zip_code = input("Please choose a Zip Code (XXXXX): ")
-    today = datetime.date.today()
-    tomorrow = today + datetime.timedelta(days = 1) 
-    date_tomorrow = str(tomorrow) # Converting the date to the "YYYY-MM-DDT00-0000" format
-    
-    data = search_data(input_date, zip_code, date_tomorrow, API_KEYS)
-    data_to_visualize(input_date, data)
-   
-# Performming a New Search 
-    search_again = input("Would you like to search for different date or Zip Code? Enter y for Yes and n for No:")
-    user_wants_search_again = search_again == 'y'
-    if user_wants_search_again:
-        new_data = search_data_again(input_date, zip_code, date_tomorrow) 
-        data_to_visualize(input_date, new_data)
+    search_again = 'y'
+    while search_again == 'y':
 
-    else:
-        print("Have a good day!")
+#   Run the Main Loop 
+        input_date = input("Please choose a date (YYYY-MM-DD format): ")
+        zip_code = input("Please choose a Zip Code (XXXXX): ")
+        today = datetime.date.today()
+        tomorrow = today + datetime.timedelta(days = 1) 
+        date_tomorrow = str(tomorrow) # Converting the date to the "YYYY-MM-DDT00-0000" format
+    
+        data = search_data(input_date, zip_code, date_tomorrow, API_KEYS)
+        data_to_visualize(input_date, zip_code, data)
+   
+#   Performming a New Search 
+        search_again = input("Would you like to search for different date or Zip Code? Enter y for Yes and n for No:")
+    
+       
+    print("Have a good day!")
  
