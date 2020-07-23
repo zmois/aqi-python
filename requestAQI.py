@@ -80,6 +80,7 @@ def plot_data(input_date):
     plt.suptitle(f'Air Quality in {data.Location[0]} on {data.Date[0]}')
     g.despine(left=True)
     g.set_ylabels('Rating')
+    plt.show()
     plt.savefig(f'results/AQI_{input_date}-{zip_code}.png')
 
 #   Save Forecast Date in the Table Format
@@ -88,7 +89,7 @@ def plot_data_f(input_date):
     data = pd.read_csv(f'results/{input_date}-{zip_code}.csv')
     data.drop(data.columns[data.columns.str.contains('unnamed',case = False)],axis = 1, inplace = True)
     
-    fig, ax = plt.subplots(figsize=(12, 2)) # set size frame
+    fig, ax = plt.subplots(figsize=(10, 2)) # set size frame
     fig.suptitle(f'Forecast Air Quality')
     ax.xaxis.set_visible(False)  # hide the x axis
     ax.yaxis.set_visible(False)  # hide the y axis
@@ -96,7 +97,8 @@ def plot_data_f(input_date):
     tb = table(ax, data, loc='upper right', colWidths =  [0.2]*len(data.columns))  # where df is your data frame
     tb.auto_set_font_size(True) # Activate set fontsize manually
     # tb.set_fontsize(16) # if ++fontsize is necessary ++colWidths
-    tb.scale(1.5, 3) # change size table
+    tb.scale(1.5, 1.5) # change size table
+    fig.tight_layout()
     plt.savefig(f'results/AQI_{input_date}-{zip_code}.png', transparent = True, bbox_inches='tight', pad_inches=0.1)
 
 #   Saving and visualizing the Data
@@ -130,7 +132,6 @@ if __name__ == "__main__":
    
 #   Performming a New Search 
         search_again = input("Would you like to search for different date or Zip Code? Enter y for Yes and n for No:")
-    
-       
+ 
     print("Have a good day!")
  

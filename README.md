@@ -4,36 +4,51 @@
 
 This project uses date from www.AirNow.gov - the U.S. Environmental Protection Agency (EPA) AirNow program that provides forecast and real-time observed air quality information across the United States, Canada, and Mexico. AirNow receives real-time air quality observations from over 2,000 monitoring stations and collects forecasts for more than 300 cities.
 
-## Installation & Running
+## Technical Summary
 
-An AirNow API account is required to obtain the API keys and get access to the web services and data feeds. Sign up for an account on the Log In page to get started. https://docs.airnowapi.org/login
-
-### Technical Summary
 - Python 3.8
 - Visual Studio Code
+- Windows
 
-**The following Python packages need to be installed:**
-- requests
-- pandas
-- matplotlib
-- seaborn
+## Installation
 
-## Project Overview
+In the beginning, an AirNow API account is required to obtain the API keys and get access to the web services and data feeds. Go to https://docs.airnowapi.org/login and Request an AirNow API Account. Once the account is created, API Keys will be granted. The API key must be saved in keys.py file: *API_KEYS = "XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX"*
 
-The search is performed by entering the Date and Zip Code. Result will be shown as plot for Air Quality Index (AQI) - levels of ozone, particle pollution, and other common air pollutants on the same scale, the higher the AQI rating, the greater the health impact.
+- Clone or Download the project
+- Create the virtual environment and install program dependencies from 'requirement.txt'
+- Open the code in Visual Studio Code and run the code by 'python requestAQI.py' command 
 
-- For Real-time air quality observations input today's date
-- For Historical air quality observations input any date in the past
-- For Air quality forecasts input tomorrow's date
+OR
+
+If the following Python packages are already installed
+   - requests
+   - pandas
+   - matplotlib
+  - seaborn
+simply download the requestAQI.py file and run the code by 'python requestAQI.py' command.
+
+## How to Run 
+
+1. The search is performed by entering the Date and Zip Code. Program starts with the prompt:
+**Please choose a date (YYYY-MM-DD format):**
+**Please choose a Zip Code (XXXXX):**
+
+- For Real-time air quality observations use today's date as input date
+- For Historical air quality observations use any date in the past as input date
+- For Air quality forecasts use tomorrow's date as input date
 
 **NOTE:** Forecasts are not necessarily available for all reporting areas. In addition, the forecast for each reporting area is unique:
-* Forecasts may not be issued every day or may be seasonal (e.g. winter or summer only).
-* Forecasts may cover from one to six days.
-* Forecasts may cover one or more pollutants (e.g. ozone, PM2.5).
-* Forecasts may include an AQI number (e.g., 51) or simply an AQI category (e.g., Moderate or Unhealthy).
+  * Forecasts may not be issued every day or may be seasonal (e.g. winter or summer only).
+  * Forecasts may cover from one to six days.
+  * Forecasts may cover one or more pollutants (e.g. ozone, PM2.5).
+  * Forecasts may include an AQI number (e.g., 51) or simply an AQI category (e.g., Moderate or Unhealthy).
 
-All search results are saved as the csv file. The Real-time observations and Historical observations are visualized as Seaborn bar plots and saved in the png format. The Forecast observations are represented as table and saved in png format.
-Some examples of typical search AQI results stored in the results folder.
+2. When the search is complited results are saved in the 'results' folder under unique name as the csv files. The Real-time observations and Historical observations are visualized as Seaborn bar plots and saved in the png format. The Forecast observations are represented as table and saved in png format.
+
+3. Program will contunue with the prompt:
+**"Would you like to search for different date or Zip Code? Enter y for Yes and n for No:"**
+When 'Yes' option is chosen the new search is performed and new search results are saved in the 'results' folder.
+But when the 'No' option is chosen program stops with the prompt "Have a good day!"
 
 ## Requirements:
 
@@ -44,5 +59,5 @@ commands/perform actions, including choosing to exit the program
 - Read data from an external file, such as text, JSON, CSV, etc and use that data in your application,
 - Create and call at least 3 functions, at least one of which must return a value that is used,
 - Connect to an external/3rd party API and read data into your app,
-- Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event),
+- Calculate and display data based on an external factor,
 - Visualize data in a graph, chart, or other visual representation of data.
