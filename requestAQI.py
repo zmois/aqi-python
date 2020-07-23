@@ -44,6 +44,7 @@ def search_data(input_date, zip_code, date_tomorrow, API_KEYS):
     else:
         past_data = get_historic_data(zip_code, input_date, API_KEYS)
         return past_data 
+    
 #   Converting Search Data to Data Frame format for Today and Historic Date
 def store_data_to_df(data):
 
