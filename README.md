@@ -31,8 +31,12 @@ simply download the requestAQI.py file and run the code by `python requestAQI.py
 =======
    - seaborn
  
+<<<<<<< HEAD
  then simply download the requestAQI.py file and run the code by 'python requestAQI.py' command.
 >>>>>>> 035b8b3f7db4dcf44823f4f9a0dc4697957896df
+=======
+ then simply download the requestAQI.py file and run the code by `python requestAQI.py` command.
+>>>>>>> f375fadc60c47c2fee174d177d19bfaefa91466f
 
 ## How to Run 
 
