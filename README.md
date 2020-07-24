@@ -15,8 +15,9 @@ This project uses date from www.AirNow.gov - the U.S. Environmental Protection A
 In the beginning, an AirNow API account is required to obtain the API keys and get access to the web services and data feeds. Go to https://docs.airnowapi.org/login and Request an AirNow API Account. Once the account is created, API Keys will be granted. The API key must be saved in keys.py file: *API_KEYS = "XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX"*
 
 - Clone or Download the project
-- Create the virtual environment and install program dependencies from 'requirement.txt'
-- Open the code in Visual Studio Code and run the code by 'python requestAQI.py' command 
+- Create the virtual environment `python3 -m venv /path/to/new/virtual/environment` (more details here https://docs.python.org/3/library/venv.html)
+- Install program dependencies from `requirement.txt` file by typing `pip3 install -r requirements.txt` in the command line
+- Open the code in Visual Studio Code and run the code by `python requestAQI.py` command 
 
 OR
 
@@ -25,7 +26,7 @@ If the following Python packages are already installed
    - pandas
    - matplotlib
   - seaborn
-simply download the requestAQI.py file and run the code by 'python requestAQI.py' command.
+simply download the requestAQI.py file and run the code by `python requestAQI.py` command.
 
 ## How to Run 
 
