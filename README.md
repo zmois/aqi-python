@@ -25,8 +25,14 @@ If the following Python packages are already installed
    - requests
    - pandas
    - matplotlib
+<<<<<<< HEAD
   - seaborn
 simply download the requestAQI.py file and run the code by `python requestAQI.py` command.
+=======
+   - seaborn
+ 
+ then simply download the requestAQI.py file and run the code by 'python requestAQI.py' command.
+>>>>>>> 035b8b3f7db4dcf44823f4f9a0dc4697957896df
 
 ## How to Run 
 
