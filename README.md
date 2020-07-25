@@ -12,7 +12,8 @@ This project uses date from www.AirNow.gov - the U.S. Environmental Protection A
 
 ## Installation
 
-In the beginning, an AirNow API account is required to obtain the API keys and get access to the web services and data feeds. Go to https://docs.airnowapi.org/login and Request an AirNow API Account. Once the account is created, API Keys will be granted. The API key must be saved in keys.py file: *API_KEYS = "XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX"*
+In the beginning, an AirNow API account is required to obtain the API keys and get access to the web services and data feeds. Go to https://docs.airnowapi.org/login and Request an AirNow API Account. Once the account is created, API Keys will be granted.
+The API key must be saved in keys.py file: *API_KEYS = "XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX"*
 
 - Clone or Download the project
 - Create the virtual environment `python3 -m venv /path/to/new/virtual/environment` (more details here https://docs.python.org/3/library/venv.html)
@@ -27,7 +28,7 @@ If the following Python packages are already installed
    - matplotlib
    - seaborn
 
-then simply download the requestAQI.py file and run the code by `python requestAQI.py` command.
+then simply download the `requestAQI.py` file and run the code by `python requestAQI.py` command.
 
 ## How to Run 
 
@@ -36,7 +37,7 @@ then simply download the requestAQI.py file and run the code by `python requestA
 **Please choose a Zip Code (XXXXX):**
 
 - For Real-time air quality observations use today's date as input date
-- For Historical air quality observations use any date in the past as input date
+- For Historical air quality observations use any date back to year **2010** as input date
 - For Air quality forecasts use tomorrow's date as input date
 
 **NOTE:** Forecasts are not necessarily available for all reporting areas. In addition, the forecast for each reporting area is unique:
