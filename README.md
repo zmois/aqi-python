@@ -16,7 +16,7 @@ In the beginning, an AirNow API account is required to obtain the API keys and g
 
 - Clone or Download the project
 - Create the virtual environment `python3 -m venv /path/to/new/virtual/environment` (more details here https://docs.python.org/3/library/venv.html)
-- Install program dependencies from `requirement.txt` file by typing `pip3 install -r requirements.txt` in the command line
+- Install program dependencies from `requirement.txt` file by typing `pip3 install -r requirements.txt --user` in the command line
 - Open the code in Visual Studio Code and run the code by `python requestAQI.py` command 
 
 OR
@@ -26,7 +26,7 @@ If the following Python packages are already installed
    - pandas
    - matplotlib
    - seaborn
-   
+
 then simply download the requestAQI.py file and run the code by `python requestAQI.py` command.
 
 ## How to Run 
@@ -45,12 +45,12 @@ then simply download the requestAQI.py file and run the code by `python requestA
   * Forecasts may cover one or more pollutants (e.g. ozone, PM2.5).
   * Forecasts may include an AQI number (e.g., 51) or simply an AQI category (e.g., Moderate or Unhealthy).
 
-2. When the search is complited results are saved in the 'results' folder under unique name as the csv files. The Real-time observations and Historical observations are visualized as Seaborn bar plots and saved in the png format. The Forecast observations are represented as table and saved in png format.
+2. When the search is complited results are saved in the `results` folder under unique name as the csv files. The Real-time observations and Historical observations are visualized as Seaborn bar plots and saved in the png format. The Forecast observations are represented as table and saved in png format.
 
 3. Program will contunue with the prompt:
 **"Would you like to search for different date or Zip Code? Enter y for Yes and n for No:"**
-When 'Yes' option is chosen the new search is performed and new search results are saved in the 'results' folder.
-But when the 'No' option is chosen program stops with the prompt "Have a good day!"
+When `Yes` option is chosen the new search is performed and new search results are saved in the `results` folder.
+But when the `No` option is chosen program stops with the prompt "Have a good day!"
 
 ## Requirements:
 
