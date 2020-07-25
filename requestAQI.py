@@ -81,7 +81,6 @@ def plot_data(input_date):
     plt.suptitle(f'Air Quality in {data.Location[0]} on {data.Date[0]}')
     g.despine(left=True)
     g.set_ylabels('Rating')
-    plt.show()
     plt.savefig(f'results/AQI_{input_date}-{zip_code}.png')
 
 #   Save Forecast Date in the Table Format
