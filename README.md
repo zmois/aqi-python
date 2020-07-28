@@ -15,7 +15,7 @@ This project uses date from www.AirNow.gov - the U.S. Environmental Protection A
 In the beginning, an AirNow API account is required to obtain the API keys and get access to the web services and data feeds. Go to https://docs.airnowapi.org/login and Request an AirNow API Account. Once the account is created, API Keys will be granted.
 The API key must be saved in keys.py file: *API_KEYS = "XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX"*
 
-- Clone or Download the project
+- Clone or Download the project `git clone https://github.com/zmois/aqi-python`
 - Create the virtual environment `python3 -m venv /path/to/new/virtual/environment` (more details here https://docs.python.org/3/library/venv.html)
 - Install program dependencies from `requirement.txt` file by typing `pip3 install -r requirements.txt --user` in the command line
 - Open the code in Visual Studio Code and run the code by `python requestAQI.py` command 
@@ -46,21 +46,24 @@ then simply download the `requestAQI.py` file and run the code by `python reques
   * Forecasts may cover one or more pollutants (e.g. ozone, PM2.5).
   * Forecasts may include an AQI number (e.g., 51) or simply an AQI category (e.g., Moderate or Unhealthy).
 
-2. When the search is complited results are saved in the `results` folder under unique name as the csv files. The Real-time observations and Historical observations are visualized as Seaborn bar plots and saved in the png format. The Forecast observations are represented as table and saved in png format.
+2. When the search is complited results are saved in the `results` folder under unique name as the csv files. The Real-time observations and Historical observations are visualized as Seaborn bar plots and saved in the png format. The Forecast observations are represented as table and saved in png format. Some examples of the search results saved in `results` folder.
 
 3. Program will contunue with the prompt:
 **"Would you like to search for different date or Zip Code? Enter y for Yes and n for No:"**
 When `Yes` option is chosen the new search is performed and new search results are saved in the `results` folder.
 But when the `No` option is chosen program stops with the prompt "Have a good day!"
 
+**NOTE:** 
+
 ## Requirements:
 
 This project fulfills the following requirements:
 - Implement a “master loop” console application where the user can repeatedly enter
-commands/perform actions, including choosing to exit the program
+commands/perform actions, including choosing to exit the program,
 - Create a dictionary or list, populate it with several values, retrieve at least one value, and use it   in your program,
 - Read data from an external file, such as text, JSON, CSV, etc and use that data in your application,
 - Create and call at least 3 functions, at least one of which must return a value that is used,
 - Connect to an external/3rd party API and read data into your app,
 - Calculate and display data based on an external factor,
 - Visualize data in a graph, chart, or other visual representation of data.
+- More than 5 commits to GitHub.

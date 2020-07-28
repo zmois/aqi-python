@@ -82,6 +82,7 @@ def plot_data(input_date):
     g.despine(left=True)
     g.set_ylabels('Rating')
     plt.savefig(f'results/AQI_{input_date}-{zip_code}.png')
+    print(f'Your search result is saved in results/AQI_{input_date}-{zip_code}.png')
 
 #   Save Forecast Date in the Table Format
 def plot_data_f(input_date):
@@ -100,6 +101,7 @@ def plot_data_f(input_date):
     tb.scale(1.5, 1.5) # change size table
     fig.tight_layout()
     plt.savefig(f'results/AQI_{input_date}-{zip_code}.png', transparent = True, bbox_inches='tight', pad_inches=0.1)
+    print(f'Your search result is saved in results/AQI_{input_date}-{zip_code}.png')
 
 #   Saving and visualizing the Data
 def data_to_visualize(input_date, zip_code, data):
