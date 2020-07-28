@@ -39,7 +39,7 @@ def search_data(input_date, zip_code, date_tomorrow, API_KEYS):
 
     elif input_date == date_tomorrow: 
        forecast_data = get_forecast_data(zip_code, date_tomorrow, API_KEYS)
-       return forecast_data 
+       return forecast_data
 
     else:
         past_data = get_historic_data(zip_code, input_date, API_KEYS)
@@ -47,7 +47,7 @@ def search_data(input_date, zip_code, date_tomorrow, API_KEYS):
     
 #   Converting Search Data to Data Frame format for Today and Historic Date
 def store_data_to_df(data):
-
+   
     df = pd.json_normalize(data) 
     df['Location'] = df['ReportingArea'].str.cat(df['StateCode'], sep=", ")
     df.rename(columns = {'DateObserved':'Date','ParameterName':'Air_Pollutants','Category.Name':'Rating'},
@@ -128,7 +128,10 @@ if __name__ == "__main__":
         date_tomorrow = str(tomorrow) # Converting the date to the "YYYY-MM-DDT00-0000" format
     
         data = search_data(input_date, zip_code, date_tomorrow, API_KEYS)
-        data_to_visualize(input_date, zip_code, data)
+        if not data:
+            print('AQI is not available. Please try different Zip Code.')
+        else: 
+            data_to_visualize(input_date, zip_code, data)
    
 #   Performming a New Search 
         search_again = input("Would you like to search for different date or Zip Code? Enter y for Yes and n for No:")
