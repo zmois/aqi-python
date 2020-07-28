@@ -53,7 +53,7 @@ then simply download the `requestAQI.py` file and run the code by `python reques
 When `Yes` option is chosen the new search is performed and new search results are saved in the `results` folder.
 But when the `No` option is chosen program stops with the prompt "Have a good day!"
 
-**NOTE:** 
+**NOTE:** The API is a bit flaky and might give an error, please try again with different input parameters.
 
 ## Requirements:
 
