@@ -7,7 +7,6 @@ This project uses date from www.AirNow.gov - the U.S. Environmental Protection A
 ## Technical Summary
 
 - Python 3.8
-- Visual Studio Code
 - Windows
 
 ## Installation
@@ -16,19 +15,20 @@ In the beginning, an AirNow API account is required to obtain the API keys and g
 The API key must be saved in keys.py file: *API_KEYS = "XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX"*
 
 - Clone or Download the project `git clone https://github.com/zmois/aqi-python`
-- Create the virtual environment `python3 -m venv /path/to/new/virtual/environment` (more details here https://docs.python.org/3/library/venv.html)
-- Install program dependencies from `requirement.txt` file by typing `pip3 install -r requirements.txt --user` in the command line
-- Open the code in Visual Studio Code and run the code by `python requestAQI.py` command 
+-  Open a cmd or terminal and cd (navigate) to the folder that contains the requestAQI.py file
+- Create the virtual environment `python3 -m venv /path/where/you/cloned/my/project/in/same/folder/as/requestAQI.py` (more details here https://docs.python.org/3/library/venv.html)
+- Install program dependencies from `requirement.txt` file by typing `pip3 install -r requirements.txt --user` in the command terminal
+- Run the code by `python requestAQI.py` command in command terminal
 
 OR
 
-If the following Python packages are already installed
-   - requests
-   - pandas
-   - matplotlib
-   - seaborn
+Install the following packages from the cmd or terminal, if not already installed using the pip commands provided:
+  - pip install requests
+  - pip install pandas
+  - pip install matplotlib
+  - pip install seaborn
 
-then simply download the `requestAQI.py` file and run the code by `python requestAQI.py` command.
+Once installed, then simply run the `requestAQI.py` file using the terminal with this command: `python requestAQI.py`
 
 ## How to Run 
 
