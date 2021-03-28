@@ -1,5 +1,3 @@
-# ReadMe
-
 **Code Louisville Python Project**
 
 This project uses data from www.AirNow.gov - the U.S. Environmental Protection Agency (EPA) AirNow program that provides forecast and real-time observed air quality information across the United States, Canada, and Mexico. AirNow receives real-time air quality observations from over 2,000 monitoring stations and collects forecasts for more than 300 cities.
@@ -15,7 +13,7 @@ In the beginning, an AirNow API account is required to obtain the API keys and g
 The API key must be saved in keys.py file: *API_KEYS = "XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX"*
 
 - Clone or Download the project `git clone https://github.com/zmois/aqi-python`
--  Open a cmd or terminal and cd (navigate) to the folder that contains the requestAQI.py file
+- Open a cmd or terminal and cd (navigate) to the folder that contains the requestAQI.py file
 - Create the virtual environment `python3 -m venv /path/where/you/cloned/my/project/in/same/folder/as/requestAQI.py` (more details here https://docs.python.org/3/library/venv.html)
 - Install program dependencies from `requirement.txt` file by typing `pip3 install -r requirements.txt --user` in the command terminal
 - Run the code by `python requestAQI.py` command in command terminal
